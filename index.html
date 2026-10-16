@@ -5,7 +5,7 @@ for (const card of document.querySelectorAll('figure')) {
  const img=card.querySelector('img'); if(!img || img.src.startsWith('data:')) continue;
  const status=card.querySelector('.photo-status'), failed=card.querySelector('.failed'), picker=card.querySelector('input[type=file]');
  img.addEventListener('load',()=>{status.textContent='사진 표시됨';status.classList.remove('error');failed.hidden=true});
- img.addEventListener('error',()=>{status.textContent='이 사이트가 사진 표시를 허용하지 않았습니다. 원문을 열거나 내 사진을 선택하세요.';status.classList.add('error');failed.hidden=false});
+ img.addEventListener('error',()=>{status.textContent='.';status.classList.add('error');failed.hidden=false});
  picker.addEventListener('change',()=>{const f=picker.files&&picker.files[0];if(!f)return;img.removeAttribute('referrerpolicy');img.src=URL.createObjectURL(f);status.textContent='선택한 사진 표시 중';status.classList.remove('error');failed.hidden=true});
  if(img.complete && img.naturalWidth){status.textContent='사진 표시됨'}
 }
